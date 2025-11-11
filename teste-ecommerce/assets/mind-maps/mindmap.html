@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Map - Adicionar Produto ao Carrinho</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 1400px;
+            width: 100%;
+        }
+        .title {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 40px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .mindmap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 600px;
+        }
+        .central-node {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            max-width: 300px;
+            z-index: 10;
+        }
+        .branches {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .branch {
+            position: absolute;
+            display: flex;
+            align-items: center;
+        }
+        .branch-line {
+            height: 3px;
+            background: #667eea;
+            opacity: 0.6;
+        }
+        .node {
+            background: white;
+            border: 3px solid;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 180px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .node.preconditions {
+            border-color: #10b981;
+            color: #10b981;
+        }
+        .node.actions {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+        .node.validations {
+            border-color: #f59e0b;
+            color: #f59e0b;
+        }
+        .node.scenarios {
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+        .sub-node {
+            background: #f9fafb;
+            border: 2px solid;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin: 5px 0;
+            font-weight: normal;
+        }
+        .branch-top-left {
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+        }
+        .branch-top-right {
+            top: 50%;
+            right: 0;
+            transform: translate(0, -50%);
+        }
+        .branch-bottom-left {
+            bottom: 10%;
+            left: 15%;
+        }
+        .branch-bottom-right {
+            bottom: 10%;
+            right: 15%;
+        }
+        .sub-nodes {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Mind Map - US-001: Adicionar Produto ao Carrinho</h1>
+        
+        <div class="mindmap">
+            <!-- Central Node -->
+            <div class="central-node">
+                US-001<br>
+                Adicionar Produto<br>
+                ao Carrinho
+            </div>
+            
+            <!-- Branch 1: Pré-condições (Top Left) -->
+            <div class="branch branch-top-left" style="width: 350px;">
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <div class="node preconditions">
+                        📋 Pré-condições
+                        <div class="sub-nodes">
+                            <div class="sub-node preconditions">✓ Usuário logado</div>
+                            <div class="sub-node preconditions">✓ Produto disponível</div>
+                            <div class="sub-node preconditions">✓ Estoque suficiente</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="branch-line" style="width: 150px;"></div>
+            </div>
+            
+            <!-- Branch 2: Ações (Top Right) -->
+            <div class="branch branch-top-right" style="width: 350px; justify-content: flex-end;">
+                <div class="branch-line" style="width: 150px;"></div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="node actions">
+                        🎯 Ações do Usuário
+                        <div class="sub-nodes">
+                            <div class="sub-node actions">→ Selecionar quantidade</div>
+                            <div class="sub-node actions">→ Clicar em "Adicionar"</div>
+                            <div class="sub-node actions">→ Visualizar carrinho</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Branch 3: Validações (Bottom Left) -->
+            <div class="branch branch-bottom-left" style="width: 400px;">
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <div class="node validations">
+                        ✅ Validações
+                        <div class="sub-nodes">
+                            <div class="sub-node validations">⚡ Quantidade válida (1-99)</div>
+                            <div class="sub-node validations">⚡ Produto existe</div>
+                            <div class="sub-node validations">⚡ Estoque disponível</div>
+                            <div class="sub-node validations">⚡ Preço atualizado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Branch 4: Cenários de Teste (Bottom Right) -->
+            <div class="branch branch-bottom-right" style="width: 400px; justify-content: flex-end;">
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="node scenarios">
+                        🧪 Cenários de Teste
+                        <div class="sub-nodes">
+                            <div class="sub-node scenarios">✗ Cenário positivo</div>
+                            <div class="sub-node scenarios">✗ Quantidade inválida</div>
+                            <div class="sub-node scenarios">✗ Produto sem estoque</div>
+                            <div class="sub-node scenarios">✗ Carrinho vazio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 20px; background: #f3f4f6; border-radius: 10px;">
+            <h3 style="color: #667eea; margin-bottom: 15px;">📊 Informações do Mind Map</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; font-size: 14px;">
+                <div><strong>User Story:</strong> US-001</div>
+                <div><strong>Prioridade:</strong> Alta</div>
+                <div><strong>Complexidade:</strong> Média</div>
+                <div><strong>Sprint:</strong> Sprint 1</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
